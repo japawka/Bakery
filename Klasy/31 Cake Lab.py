@@ -48,16 +48,6 @@ class Cake:
     def add_additives(self, new_additives):
         self.additives.extend(new_additives)
 
-    def __get_text(self):
-        return self.__text
-
-    def __set_text(self, new_text):
-        if self.kind == 'cake':
-            self.__text = new_text
-            print(f"TYext has been changed to {new_text}")
-        else:
-            print(f"Text can be set only for cake {self.name}")
-
     def save_to_file(self, path):
         with open(path, "wb") as file:
             pickle.dump(self, file)
@@ -73,7 +63,17 @@ class Cake:
     def get_bakery_files(path):
         print(glob.glob(path + '/*.bakery'))
 
-    Text = property(__get_text, __set_text, None, "Changing or displaying text on cake")
+    @property
+    def IsText(self):
+        return self.__text
+
+    @IsText.setter
+    def IsText(self, new_text):
+        if self.kind == 'cake':
+            self.__text = new_text
+            print(f"Text has been changed to {new_text}")
+        else:
+            print(f"Text can be set only for cake {self.name}")
 
 
 cake_01 = Cake('Vanilla Cake', 'cake', 'vanilla', ['chocolate', 'nuts'], 'cream', True)
@@ -84,8 +84,8 @@ cake_04 = Cake('Cocoa waffle', 'waffle', 'cocoa', [], 'cocoa', False)
 cake_02.sel_filling('vanilla crean')
 cake_03.add_additives(['cocoa powder', 'coconuts'])
 
-cake_01.Text = "happy anniversary"
-cake_02.Text = "happy birthday"
+cake_01.IsText = "happy anniversary"
+cake_02.IsText = "happy birthday"
 print("-------------------")
 print("Today in our offer: ")
 print("-------------------")
