@@ -1,4 +1,0 @@
---------------------
-Performed FILE_CREATE on file dummy_file.txt started at 21-01-2021 16:13:42
---------------------
-Performed FILE_CREATE on file dummy_file.txt started at 21-01-2021 16:13:42
