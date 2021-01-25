@@ -1,6 +1,5 @@
 brand_on_sale = "Opel"
 
-
 class Car:
     number_of_cars = 0
     list_of_cars = []

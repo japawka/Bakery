@@ -22,6 +22,7 @@ class Cake:
         else:
             self.__text = ''
             print(f"Text can be set only for cake {name}")
+        self.path_to_file = os.path.join(dir, self.name + '.bakery' )
 
         Cake.bakery_offer.append(self)
 
@@ -75,7 +76,7 @@ class Cake:
 
 
 cake_01 = Cake('Vanilla Cake', 'cake', 'vanilla', ['chocolate', 'nuts'], 'cream', True)
-cake_02 = Cake('Chocolate muffin', 'muffin', 'chocolate', ['raisins', 'nuts'], 'cocoa', False, "happy birthday")
+cake_02 = Cake('Chocolate muffin', 'muffin', 'chocolate', ['raisins', 'nuts'], 'cocoa', False, "Happy birthday")
 cake_03 = Cake('Alaska Snow', 'donut', 'caramel', ['mint'], '', True)
 cake_04 = Cake('Cocoa waffle', 'waffle', 'cocoa', [], 'cocoa', False)
 
@@ -89,17 +90,15 @@ print("Today in our offer: ")
 for cake in Cake.bakery_offer:
     cake.show_info()
 
-for cake in Cake.bakery_offer:
-    cake.path_to_file = os.path.join(dir, cake.name + '.bakery' )
 
-print(cake_01.path_to_file)
-print('-'*30)
+print('-'*100)
 cake_02.save_to_file(cake_02.path_to_file)
 cake_03.save_to_file(cake_03.path_to_file)
 cake_04.save_to_file(cake_04.path_to_file)
 
-Cake.read_from_file(r'D:\Python\Python_kurs_sredniozaawansowany\files\Chocolate muffin.bakery')
-Cake.read_from_file(r'D:\Python\Python_kurs_sredniozaawansowany\files\Alaska Snow.bakery')
+Cake.read_from_file(cake_02.path_to_file)
+Cake.read_from_file(cake_04.path_to_file)
 for cake in Cake.bakery_offer:
     cake.show_info()
 
+Cake.get_bakery_files(dir)
