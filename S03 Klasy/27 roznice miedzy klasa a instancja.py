@@ -47,7 +47,7 @@ print('----------------')
 print("List of Class attributes with values:")
 for a,b in vars(Car).items():
     print(a, '=',  b)
-print()
+print(dir())
 print("List of instane attributes:", dir(car02))
 print("List of Class attributes:  ", dir(Car))
 Car.number_of_cars = 123456 # dane nie sa zabezpieczone

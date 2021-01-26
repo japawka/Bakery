@@ -8,7 +8,7 @@ def export_to_file_static(path, header, data):
         writer.writerow(header)
         writer.writerow(data)
     # just to see if function was really called
-    print(">>>> This is function export_to_file_static - static mathod")
+    print(">>>> This is function export_to_file_static - static method")
 
 
 def export_to_file_Class(cls, path):
@@ -18,10 +18,19 @@ def export_to_file_Class(cls, path):
         for car in cls.list_of_cars:
             writer.writerow([car.brand, car.model, car.IsOnSale])
     # just to see if function was really called
-    print(">>>> This is function export_to_file_static - class mathod")
+    print(">>>> This is function export_to_file_static - class method")
 
 
-dir = r"D:\Python\Python_kurs_sredniozaawansowany\files"
+def export_to_file_Instance(self, path):
+    with open(path, mode="w") as file:
+        writer = csv.writer(file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        writer.writerow(['Brand', 'Model', 'IsOnSale'])
+        writer.writerow([self.brand, self.model, self.IsOnSale])
+    # just to see if function was really called
+    print(">>>> This is function export_to_file_static - instance method")
+
+
+directory = r"D:\Python\Python_kurs_sredniozaawansowany\files"
 brand_on_sale = "Opel"
 
 
@@ -91,14 +100,27 @@ print(car03.CarTitle)
 print("Static --------------" * 10)
 #  Na razie funkcja zewnętrzna spoza klasy. Trzeba ją zrobić przypisać do klasy w kolejnym wierszu
 Car.Export_to_file_static = export_to_file_static
-export_to_file_static(dir + '\export_static.csv', ['Brand', 'Model', 'IsOnSale'],
+export_to_file_static(directory + '\export_static.csv', ['Brand', 'Model', 'IsOnSale'],
                       [car02.brand, car02.model, car02.IsOnSale])
-Car.Export_to_file_static(dir + '\export_static01.csv', ['Brand', 'Model', 'IsOnSale'],
+Car.Export_to_file_static(directory + '\export_static01.csv', ['Brand', 'Model', 'IsOnSale'],
                           [car03.brand, car03.model, car03.IsOnSale])
-print("Class --------------" * 10)
-#  Car.export_to_file_Class(dir +'\export_static05.csv') # wywala błąd, trzeba import types,
-# lub jako pierwszy argument nazwa klasy
-Car.export_to_file_Class = types.MethodType(export_to_file_Class, Car)  # po tym juz działa, funkcja przypisuje
-# funkcje jako metodę do klasy, widac to przez vars
-Car.export_to_file_Class(dir + '\export_static05.csv')
 print(vars(Car))
+
+print("Class --------------" * 10)
+#  Car.export_to_file_Class(directory +'\export_static05.csv') # wywala błąd, trzeba import types,
+# lub jako pierwszy argument nazwa klasy
+Car.Export_to_file_Class = types.MethodType(export_to_file_Class, Car)  # po tym juz działa, funkcja przypisuje
+# funkcje jako metodę do klasy, widac to przez vars
+Car.Export_to_file_Class(directory + '\export_class.csv')
+
+print(vars(Car))
+
+print("Insatnce --------------" * 10)
+export_to_file_Instance(car01, directory + '\export_innst.csv')
+car01.Export_to_file_Instance = export_to_file_Instance
+car01.Export_to_file_Instance(car01, directory + '\export_innst01.csv')
+car01.Export_to_file_Instance = types.MethodType(export_to_file_Instance, car01)
+car01.Export_to_file_Instance(directory + '\export_innst02.csv')
+print(vars(car01))
+if hasattr(car01, 'Export_to_file_Instance') and callable(car01.Export_to_file_Instance):
+    print(" OK")

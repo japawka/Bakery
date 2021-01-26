@@ -18,7 +18,7 @@ msg = "Please wait - the file {} will be downloaded"
 url = 'http://www.kwartet-jalousie.com/'
 dir = r'D:\Python\Python_kurs_sredniozaawansowany\files'
 file = 'kwartet.html'
-#save_url_file(url, dir, file, msg)
+#save_url_file(url, directory, file, msg)
 
 save_url_to_dir = functools.partial(save_url_file, dir=
 r'D:\Python\Python_kurs_sredniozaawansowany\files', msg="Please wait: {}")
