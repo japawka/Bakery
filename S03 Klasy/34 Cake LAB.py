@@ -191,6 +191,6 @@ cake_04 = Cake('Cocoa waffle', 'waffle', 'cocoa', [], 'cocoa', False)
 cake_01.show_info()
 
 add_extra_additives(cake_01, ['strawberries', 'sugar-flowers', 'nuts'])
-cake_01.show_info()
-add_extra_additives(cake_01, ['strawberries', 'sugar-flowers', 'chocolate', 'nuts'])
+
+
 cake_01.show_info()
