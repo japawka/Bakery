@@ -28,27 +28,27 @@ class Car:
         print('---------------------------', id(self))
 
 
-    # def __iadd__(self, other): # ten operator odpowiada znakowi +=
-    #     if type(other) is list:
-    #         accesories = self.accesories
-    #         accesories.extend(other)
-    #         return Car(self.brand, self.model, self.isAirBagOk, self.isPaintingOk, self.isMechanicOk, self.accesories)
-    #     elif type(other) is str:
-    #         accesories = self.accesories
-    #         accesories.append(other)
-    #         return Car(self.brand, self.model, self.isAirBagOk, self.isPaintingOk, self.isMechanicOk, self.accesories)
-    #     else:
-    #         raise Exception(f'Adding type  {type(other)} is not implemented')
-
     def __iadd__(self, other): # ten operator odpowiada znakowi +=
         if type(other) is list:
-            self.accesories.extend(other)
-            return self
+            accesories = self.accesories
+            accesories.extend(other)
+            return Car(self.brand, self.model, self.isAirBagOk, self.isPaintingOk, self.isMechanicOk, self.accesories)
         elif type(other) is str:
-            self.accesories.append(other)
-            return self
+            accesories = self.accesories
+            accesories.append(other)
+            return Car(self.brand, self.model, self.isAirBagOk, self.isPaintingOk, self.isMechanicOk, self.accesories)
         else:
             raise Exception(f'Adding type  {type(other)} is not implemented')
+
+    # def __iadd__(self, other): # ten operator odpowiada znakowi +=
+    #     if type(other) is list:
+    #         self.accesories.extend(other)
+    #         return self
+    #     elif type(other) is str:
+    #         self.accesories.append(other)
+    #         return self
+    #     else:
+    #         raise Exception(f'Adding type  {type(other)} is not implemented')
 
 
 
@@ -64,14 +64,16 @@ class Car:
 car01 = Car("Seat", "Ibiza", True, True, True, ['winter tires'])
 
 car02 = Car("Ford", "Fiesta", True, False, True, ['Cd player'])
-car02.get_info()
+#car02.get_info()
 car02.__iadd__('navigation')
-car02.get_info()
+#car02.get_info()
 car02 += 'car audio'
-car02.get_info()
+#car02.get_info()
 car02 += 'Roof rack'
 
 
+for car in Car.list_of_cars:
+    car.get_info()
 
 
 

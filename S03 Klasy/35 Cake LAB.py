@@ -1,4 +1,3 @@
-
 class Cake:
     known_types = ['cake', 'muffin', 'meringue', 'biscuit', 'eclair', 'christmas', 'pretzel', 'other']
     bakery_offer = []
@@ -10,7 +9,7 @@ class Cake:
         else:
             self.kind = 'other'
         self.taste = taste
-        self.additives = additives.copy()
+        self.additives = additives
         self.filling = filling
         Cake.bakery_offer.append(self)
 
@@ -33,10 +32,11 @@ class Cake:
             self.additives.append(other)
             return self
 
-        if type(other) is list:
+        elif type(other) is list:
             self.additives.extend(other)
             return self
-
+        else:
+            print(f'Adding type {type(other)} is not implemented')
 
 
 cake_01 = Cake('Vanilla Cake', 'cake', 'vanilla', ['chocolate', 'nuts'], 'cream')
@@ -47,6 +47,6 @@ for cake in Cake.bakery_offer:
     print(cake)
 print()
 
-cake_01 += ['Happy Anniversary', 'From children']
+cake_01 += ' lkj lkjlkj  lkjl  '
 for cake in Cake.bakery_offer:
     print(cake)
