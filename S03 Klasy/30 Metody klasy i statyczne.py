@@ -34,7 +34,7 @@ class Car:
             self.__isOnSale = newIsOnSaleStatus
             print(f"Changing status isOnSale to {newIsOnSaleStatus} for {self.brand}")
         else:
-            print(f'Cannot czange staus . Sale valid for {brand_on_sale} only')
+            print(f'Cannot change staus . Sale valid for {brand_on_sale} only')
 
     # dodamy własciwość, która w sposób szybszy pozwoli na zmiane isOnSale, bez używania (wpisywania) metody
     IsOnSale = property(__get_is_on_sale, __set_is_on_sale, None, "if set to true - the car is available in  promo")

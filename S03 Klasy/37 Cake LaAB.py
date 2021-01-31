@@ -46,7 +46,7 @@ class Promo():
 
 
 cake = Cake('Vanilla Cake', 'cake', 'vanilla', ['chocolade', 'nuts'], 'cream')
-cake.show_info()
+print(cake.full_name)
 
 promo10 = Promo("DISCOUNT - no additional conditions", 0.15, date.today(), date.today() + timedelta(days=14), 0)
 print(promo10.full_name)
@@ -56,8 +56,6 @@ class PromoCake(Cake, Promo):
         Cake.__init__(self, cake.name, cake.kind, cake.taste, cake.additives, cake.filling)
         Promo.__init__(self, promo.name, promo.discount, promo.start_date, promo.end_date, promo.minimal_order)
 
-promo_cake = PromoCake(cake, promo10)
-print(promo_cake.full_name)
-print('------------------------')
-promo_cake.show_info()
+cakePromo = PromoCake(cake, promo10)
+print(cakePromo.full_name)
 print(PromoCake.mro())
