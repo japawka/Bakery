@@ -13,9 +13,9 @@ def createFuncWithWrapper(func):
 
 a = ['Mary', 'had', 'a', 'little', 'lamb']
 for i in range(len(a)):
-    print(i, a[i])
-for pos, day in enumerate(a, 1):
-    print(pos, day)
+    print(i + 1, a[i])
+for pos, item in enumerate(a, 1):
+    print(pos, item)
 
 print()
 
@@ -42,7 +42,7 @@ for k, v in my_dict.items():
     if v == max(my_dict.values()):
         print(k, v)
 
-fib(100)
+fib(30)
 
 
 matrix = [
@@ -79,7 +79,7 @@ def fibo(n):
 
     return result
 
-print(fibo(10))
+print(fibo(30))
 
 nums = [1,2,3,4,5,6,7,8,9,10,11,12]
 mat = []
