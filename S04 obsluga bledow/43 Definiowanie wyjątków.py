@@ -17,7 +17,7 @@ class BITDataFormatException(BITException):
 
 try:
     # do smth...
-    raise BITDataFormatException('file format is incorrect', 'Financial data')
+    raise BITSecurityException ('file format is incorrect', 'Financial data')
 
 except BITSecurityException as e:
     print(f'Application security error: {e}')
@@ -41,7 +41,7 @@ class TripException(Exception):
         self.description = desccription
 
     def __str__(self):
-        return f'{super().__str__()} description: {self.description}'
+        return f'{super().__str__()} info: {self.description}'
 
 
 class TripNameException(TripException):
@@ -67,6 +67,9 @@ class Trip:
         if self.start > self.end:
             raise TripDateException("Date error")
 
+    def __str__(self):
+        return f'Trip to {self.title}, from {self.start} to {self.end}'
+
     @classmethod
     def publish_offer(cls, trips):
         list_of_errors = []
@@ -80,13 +83,14 @@ class Trip:
         if list_of_errors:
             raise TripException("The list of trips has errors:", list_of_errors)
         else:
-            print("the offer will be published...")
+            for trip in trips:
+                print(trip)
 
 
 trips = [
     Trip('IT-VNC', '', dt.date(2023, 6, 1), dt.date(2023, 6, 12)),
-    Trip('SP-BRC', 'Spain-Barcelona', dt.date(2023, 6, 12), dt.date(2023, 5, 22)),
-    Trip('IT-ROM', 'Italy-Rome', dt.date(2023, 6, 21), dt.date(2023, 6, 12))
+    Trip('SP-BRC', 'Spain-Barcelona', dt.date(2023, 6, 12), dt.date(2023, 6, 22)),
+    Trip('IT-ROM', 'Italy-Rome', dt.date(2023, 6, 1), dt.date(2023, 6, 12))
 ]
 
 try:

@@ -27,7 +27,7 @@ def fib(n):
     while len(result) <= n:
         result.append(a)
         a, b = b, a + b
-    print(result)
+    #print(result)
     print("FIbonacci ", result[n-1])
 
 
@@ -81,13 +81,23 @@ def fibo(n):
 
 print(fibo(30))
 
-nums = [1,2,3,4,5,6,7,8,9,10,11,12]
-mat = []
-k = 0
-for i in range(3):
-    row = []
-    mat.append(row)
-    while len(row) < 3:
-        row.append(nums[k])
-        k += 1
-print(mat)
+nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+nums1 = list(range(30))
+def matrix_create(list, n):
+    matrix = []
+    k = 0
+    for i in range(len(list) // n + 1):
+        row = []
+        matrix.append(row)
+        while len(row) < n:
+            row.append(list[k])
+            if k < len(list) - 1:
+                k += 1
+            else:
+                break
+    print(matrix)
+
+
+matrix_create(nums1, 4)
+
+
