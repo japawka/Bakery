@@ -92,6 +92,5 @@ combinations = Combinations(products, promotions, customers)
 
 for c in combinations:
     print(c)
-for c in combinations:
-    print(c)
+print(next(iter(combinations)))
 
