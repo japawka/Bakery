@@ -29,12 +29,13 @@ def scan_tree(path):
 
 
 listing = scan_tree(r'D:\Python\Python_kurs_sredniozaawansowany\files')
-lista = []
+
 for l in listing:
     print('Katalog: ' if l.is_dir() else 'plik: ', l.path)
-    lista.append(l)
 
-lista = sorted(lista, key=lambda x: x.is_dir())
+listing = scan_tree(r'D:\Python\Python_kurs_sredniozaawansowany\files')
+
+lista = sorted(listing, key=lambda x: x.is_dir())
 
 for key, element in it.groupby(lista, key=lambda x: x.is_dir()):
     print('Katalogów: ' if key else 'plików: ', len(list(element)))

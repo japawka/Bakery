@@ -61,8 +61,7 @@ print("mart", mart)
 next_lst = list(zip(*matrix))
 print(next_lst)
 
-matrix2 = [[j for j in range(8)] for i in range(2)]
-print(matrix2)
+
 
 numbers = [1.5, 3.2, 4.3]
 print(sorted(numbers, key=lambda x: x - int(x)))  # [3.2, 4.3, 1.5]
@@ -81,12 +80,12 @@ def fibo(n):
 
 print(fibo(30))
 
-nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-nums1 = list(range(30))
+nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+nums1 = list(range(1, 103))
 def matrix_create(list, n):
     matrix = []
     k = 0
-    for i in range(len(list) // n + 1):
+    for i in range(len(list) // n if len(list) % n == 0 else len(list) // n + 1):
         row = []
         matrix.append(row)
         while len(row) < n:
@@ -95,9 +94,23 @@ def matrix_create(list, n):
                 k += 1
             else:
                 break
-    print(matrix)
+    return matrix
 
 
-matrix_create(nums1, 4)
+my_matrix = matrix_create(nums1, 7)
+for m in my_matrix:
+    rowek = ''
+    for member in m:
+        rowek += f'{member:4}'
+    print(rowek.lstrip())
 
-
+# for x in range(1, 11):
+# #     print(f'{x:02} {x*x:3} {x*x*x:4}')
+# #
+# # print('---------------------')
+# # for x in range(1, 10):
+# #     line = ''
+# #     for y in range(1, 10):
+# #         line += f"\t{x*y:2}"
+# #     print(line)
+# # print('---------------------------')
